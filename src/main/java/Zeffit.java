@@ -10,8 +10,12 @@
 public class Zeffit
 {
     // TODO: add final variables
+    private static final int MAX_HITS = 4;
+    private static final String EXPLODED_STATE = "Exploded!";
 
     // TODO: add instance variable(s)
+    private int hits;
+    private String state;
 
     /**
      * Constructor for objects of class Zeffit
@@ -19,6 +23,8 @@ public class Zeffit
     public Zeffit()
     {
         // TODO: initialize instance variable(s)
+        hits = 0;
+        state = "Normal";
     }
 
     /**
@@ -28,6 +34,18 @@ public class Zeffit
     public void takesHit()
     {
         // TODO: replace this line with your code
+        if (!isDead()) {
+            hits++;
+            if (hits == 1) {
+                state = "Green";
+            } else if (hits == 2) {
+                state = "Blue";
+            } else if (hits == 3) {
+                state = "Red";
+            } else if (hits >= MAX_HITS) {
+                state = EXPLODED_STATE;
+            }
+        }
     }
 
     /**
@@ -38,6 +56,8 @@ public class Zeffit
     public boolean isHitFree()
     {
         // TODO: replace this line with your code
+        return hits == 0;
+
     }
 
     /**
@@ -48,6 +68,8 @@ public class Zeffit
     public boolean isGreen()
     {
         // TODO: replace this line with your code
+        return state == "Green";
+
     }
 
     /**
@@ -58,6 +80,8 @@ public class Zeffit
     public boolean isBlue()
     {
         // TODO: replace this line with your code
+        return state == "Blue";
+
     }
 
     /**
@@ -68,6 +92,8 @@ public class Zeffit
     public boolean isRed()
     {
         // TODO: replace this line with your code
+        return state == "Red";
+
     }
 
     /**
@@ -78,6 +104,8 @@ public class Zeffit
     public boolean isDead()
     {
         // TODO: replace this line with your code
+        return state == EXPLODED_STATE;
+
     }
 }
 

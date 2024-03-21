@@ -9,10 +9,23 @@
 
 public class SkillBuilder6 {
 
-    // replace this line with your constants
 
-    public static String findTYPattern(String s)
-    {
-        // replace this line with your code
+    public static String findTYPattern(String s) {
+        StringBuilder result = new StringBuilder();
+        boolean foundT = false;
+
+        for (char c : s.toCharArray()) {
+            if ((c == 't' || c == 'T') && !foundT) {
+                foundT = true;
+                result.append(c);
+            } else if (foundT) {
+                result.append(c);
+                if (c == 'y' || c == 'Y') {
+                    return result.toString();
+                }
+            }
+        }
+
+        return "";
     }
 }
